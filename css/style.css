@@ -1,0 +1,153 @@
+/* Resetando algumas margens e padding */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar-custom {
+  background: linear-gradient(135deg, #0f2027, #040214);
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-custom .navbar-brand {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.navbar-custom .nav-link {
+  color: #fff !important;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-custom .nav-link:hover {
+  color: #ffc107 !important;
+}
+
+#welcome {
+  background: linear-gradient(135deg, #0f2027, #040214, #080322);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  padding: 6rem 0;
+}
+
+#welcome h1 {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+#welcome .highlight {
+  color: #00e6e6;
+}
+
+#welcome .btn {
+  margin-top: 2rem;
+  font-size: 1.3rem;
+  background-color: #23b6b6;
+  border: none;
+}
+
+#welcome .btn:hover {
+  background-color: #1b6e6d;
+}
+
+/* Seção de funcionalidades */
+.section-style {
+  padding: 5rem 0;
+  background: linear-gradient(to right, #02052c, #203a43, #2c5364);
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 1rem;
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-glass:hover {
+  transform: translateY(-10px);
+}
+
+.card-title {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Seção sobre a empresa */
+#sobre {
+  background-color: #f8f9fa;
+  padding: 4rem 0;
+}
+
+#sobre h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+#sobre .lead {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Animação de gradiente */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+  
+
+
+/* Main */
+.btn-primary {
+  background-color: #007bff; /* Cor azul */
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Cor azul escuro */
+  border-color: #004085;
+}
+
+/* Alterar cor do texto nos containers */
+.container, .card-body, .card-title, .lead {
+  color: #e1e1e1; /* Cor de texto mais clara */
+}
+
+/* Alterar cor da barra de navegação */
+.navbar-custom {
+  background: linear-gradient(135deg, #0f2027, #040214);
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustar a cor dos links do menu */
+.navbar-custom .nav-link {
+  color: #fff !important;
+}
+
+.navbar-custom .nav-link:hover {
+  color: #00e6e6 !important; /* Cor personalizada para hover */
+}
+
+/* Alterar o fundo e bordas das cards */
+.card-glass {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 1rem;
+  backdrop-filter: blur(8px);
+}
+
+/* Texto das cards */
+.card-title {
+  color: #fff;
+}
+
+/* Ajustar a cor dos textos no "Sobre" */
+#sobre p, #sobre h2 {
+  color: #444; 
+}
