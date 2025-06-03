@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "123"
+    },
+    {
+      "id": "67bd",
+      "username": "diego123",
+      "password": "1234"
+    }
+  ],
+  "incidents": [
+    {
+      "id": "ff6c",
+      "date": "2025-06-25T18:42",
+      "type": "queda de rede ",
+      "description": "sdhlaksj",
+      "status": "em_andamento"
+    }
+  ]
+}

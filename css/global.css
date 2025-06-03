@@ -1,0 +1,35 @@
+/* css/global.css */
+
+/* Estilos globais para o corpo da página */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* O gradiente de fundo do body será específico para login/register_user e landing,
+       então vamos remover o gradiente global aqui ou definir um neutro */
+    background-color: #f8f9fa; /* Um cinza claro padrão, será sobrescrito em páginas específicas */
+    color: #343a40; /* Cor de texto padrão */
+}
+
+/* Estilos para a barra de navegação (comum a todas) */
+.navbar {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Estilos para o cabeçalho principal (usado em register.html e pode ser reutilizado) */
+header.bg-primary {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #1c497a !important; /* Um tom de azul primário mais escuro */
+    color: white;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+header.bg-primary h1 {
+    font-weight: 700;
+}
+
+/* --- Estilos para o rodapé (comum a todas) --- */
+footer {
+    background-color: #212529 !important; /* Um cinza escuro para o rodapé */
+    padding: 25px 0;
+    color: #adb5bd; /* Um cinza mais claro para o texto do rodapé */
+    font-size: 0.9rem;
+}

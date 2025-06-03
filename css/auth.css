@@ -1,0 +1,72 @@
+/* css/auth.css */
+
+/* Fundo específico para as páginas de autenticação */
+body.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #007bff, #0056b3); /* Gradiente de azul para o fundo */
+}
+
+/* Container do formulário de login/registro */
+.login-container {
+    max-width: 450px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    background-color: white;
+    animation: fadeIn 1s ease-out;
+}
+.login-container h2 {
+    color: #007bff;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* Estilos para labels flutuantes do Bootstrap */
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-select ~ label {
+    transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+    color: #007bff; /* Cor da label flutuante */
+}
+
+/* Botões específicos de login/registro */
+.login-container .btn-primary,
+.login-container .btn-success { /* Adicionado btn-success para o registro de usuário */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+.login-container .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.login-container .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+.login-container .btn-success { /* Estilo para o botão de registro */
+    background-color: #28a745;
+    border-color: #28a745;
+}
+.login-container .btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* Mensagens de alerta/erro/sucesso */
+.login-container .alert {
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* Animação para o container de login/registro */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

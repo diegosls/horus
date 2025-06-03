@@ -1,0 +1,80 @@
+/* css/dashboard.css */
+
+/* Estilos para os cards de incidentes */
+.card {
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    border-radius: 10px;
+    border: none;
+}
+.card-title {
+    color: #0056b3;
+    font-weight: 600;
+}
+.card-subtitle {
+    font-size: 0.9em;
+}
+
+/* Cores para os status dos incidentes (badges) */
+.status-aberto {
+    background-color: #dc3545; /* Vermelho Bootstrap */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.status-em_andamento {
+    background-color: #ffc107; /* Amarelo Bootstrap */
+    color: #343a40; /* Texto escuro para contraste */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.status-resolvido {
+    background-color: #28a745; /* Verde Bootstrap */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Seções de formulário e lista */
+section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+section h2 {
+    color: #1c497a;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+hr {
+    border-top: 1px solid rgba(0,0,0,.1);
+    margin: 40px 0;
+}
+.form-label {
+    font-weight: 500;
+    color: #343a40;
+}
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+.btn-danger {
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+}

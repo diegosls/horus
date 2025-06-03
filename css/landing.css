@@ -1,0 +1,100 @@
+/* css/landing.css */
+
+/* Fundo específico para a landing page */
+body {
+    background: linear-gradient(135deg, #0f2027, #040214); /* Fundo escuro da sua escolha */
+}
+
+/* Hero Section (seção principal da landing page) */
+.hero-section {
+    /* Imagem de fundo: Certifique-se de que 'img/network-bg.jpg' exista ou use um placeholder */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../img/network-bg.jpg') no-repeat center center/cover;
+    /* Se não tiver a imagem, use um placeholder temporário */
+    /* background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1500x800?text=Fundo+de+Rede') no-repeat center center/cover; */
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+    margin-bottom: 50px;
+}
+.hero-section h1 {
+    font-size: 4rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+.hero-section p {
+    font-size: 1.4rem;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Seção de Recursos (Features Section) */
+.features-section {
+    padding: 80px 0;
+    background-color: #e9ecef; /* Um cinza um pouco mais escuro */
+}
+.features-section h2 {
+    color: #0056b3; /* Cor do título da seção */
+    margin-bottom: 60px;
+    font-weight: 600;
+}
+.feature-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+.feature-card h3 {
+    color: #007bff;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* Estilo para ícones do Bootstrap Icons nas features */
+.feature-card i {
+    font-size: 4rem;
+    color: #007bff; /* Cor primária do Bootstrap */
+    margin-bottom: 20px;
+    display: block; /* Garante que o ícone ocupe sua própria linha */
+}
+
+/* Seção de Chamada para Ação (Call-to-Action) */
+.call-to-action {
+    background-color: #007bff; /* Azul primário */
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+.call-to-action h2 {
+    font-size: 3rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+.call-to-action p {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.call-to-action .btn {
+    border-radius: 50px;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.call-to-action .btn:hover {
+    transform: translateY(-3px);
+}
