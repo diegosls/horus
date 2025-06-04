@@ -1,35 +1,67 @@
-/* css/global.css */
+/* Variáveis de cor para o tema escuro */
+:root {
+    --color-bg-darkest: #1A1A2E;
+    --color-bg-dark: #16213E;
+    --color-bg-medium: #0F3460;
+    --color-bg-light: #533483;
+
+    --color-primary: #BB86FC;
+    --color-secondary: #03DAC6;
+    --color-accent-blue: #4A90E2;
+    --color-accent-purple: #9B59B6;
+
+    --color-text-light: #E0E0E0;
+    --color-text-lighter: #B0B0B0;
+    --color-text-white: #FFFFFF;
+
+    --color-status-open: #CF6679;
+    --color-status-pending: #FDD835;
+    --color-status-resolved: #62BB47;
+}
+
 
 /* Estilos globais para o corpo da página */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* O gradiente de fundo do body será específico para login/register_user e landing,
-       então vamos remover o gradiente global aqui ou definir um neutro */
-    background-color: #f8f9fa; /* Um cinza claro padrão, será sobrescrito em páginas específicas */
-    color: #343a40; /* Cor de texto padrão */
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-text-light);
+    background-color: var(--color-bg-darkest);
 }
 
-/* Estilos para a barra de navegação (comum a todas) */
+/* Estilos para a barra de navegação */
 .navbar {
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--color-bg-dark) !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+.navbar-brand, .navbar-nav .nav-link {
+    color: var(--color-text-white) !important;
+}
+.navbar-nav .nav-link:hover {
+    color: var(--color-primary) !important;
+}
+.navbar-nav .nav-link.active {
+    color: var(--color-secondary) !important;
 }
 
-/* Estilos para o cabeçalho principal (usado em register.html e pode ser reutilizado) */
+
+/* Estilos para o cabeçalho principal */
 header.bg-primary {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    background-color: #1c497a !important; /* Um tom de azul primário mais escuro */
-    color: white;
-    padding: 2rem 0;
+    background-color: var(--color-bg-medium) !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    color: var(--color-text-white);
+    padding: 2.5rem 0;
     margin-bottom: 2rem;
 }
 header.bg-primary h1 {
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
+    color: var(--color-text-white);
 }
 
-/* --- Estilos para o rodapé (comum a todas) --- */
+/* --- Estilos para o rodapé --- */
 footer {
-    background-color: #212529 !important; /* Um cinza escuro para o rodapé */
+    background-color: var(--color-bg-darkest) !important;
     padding: 25px 0;
-    color: #adb5bd; /* Um cinza mais claro para o texto do rodapé */
+    color: var(--color-text-lighter);
     font-size: 0.9rem;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.4);
 }

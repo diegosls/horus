@@ -1,72 +1,124 @@
-/* css/auth.css */
 
-/* Fundo específico para as páginas de autenticação */
+/* Fundo para páginas de autenticação */
 body.login-body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(to right, #007bff, #0056b3); /* Gradiente de azul para o fundo */
+    background: linear-gradient(135deg, var(--color-bg-darkest), var(--color-bg-dark), var(--color-bg-light));
+    color: var(--color-text-light);
 }
 
-/* Container do formulário de login/registro */
+/* Container do formulário */
 .login-container {
-    max-width: 450px;
+    max-width: 480px;
     width: 100%;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    background-color: white;
+    padding: 50px;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    background-color: var(--color-bg-dark);
     animation: fadeIn 1s ease-out;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 .login-container h2 {
-    color: #007bff;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-primary);
     font-weight: 700;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
 }
 
-/* Estilos para labels flutuantes do Bootstrap */
+/* Estilos para campos de formulário e labels */
+.form-floating .form-control,
+.form-floating .form-select {
+    background-color: var(--color-bg-darkest);
+    color: var(--color-text-white);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 1.25rem 0.75rem;
+}
+.form-floating .form-control:focus,
+.form-floating .form-select:focus {
+    background-color: var(--color-bg-darkest);
+    color: var(--color-text-white);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.25rem rgba(187, 134, 252, 0.25);
+}
+.form-floating > label {
+    color: var(--color-text-lighter);
+    padding-left: 0.75rem;
+    padding-top: 0.75rem;
+}
 .form-floating > .form-control:focus ~ label,
 .form-floating > .form-control:not(:placeholder-shown) ~ label,
 .form-floating > .form-select ~ label {
-    transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
-    color: #007bff; /* Cor da label flutuante */
+    transform: scale(.85) translateY(-0.85rem) translateX(0.15rem);
+    color: var(--color-primary);
 }
 
-/* Botões específicos de login/registro */
+
+/* Botões de login/registro */
 .login-container .btn-primary,
-.login-container .btn-success { /* Adicionado btn-success para o registro de usuário */
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-    font-weight: bold;
-    padding: 10px 20px;
+.login-container .btn-success {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 .login-container .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: var(--color-accent-blue);
+    border-color: var(--color-accent-blue);
+    color: var(--color-text-white);
 }
 .login-container .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
+    background-color: #3A7ABF;
+    border-color: #3A7ABF;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
 }
-.login-container .btn-success { /* Estilo para o botão de registro */
-    background-color: #28a745;
-    border-color: #28a745;
+.login-container .btn-success {
+    background-color: var(--color-status-resolved);
+    border-color: var(--color-status-resolved);
+    color: var(--color-bg-darkest);
 }
 .login-container .btn-success:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
+    background-color: #5AA13E;
+    border-color: #5AA13E;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+/* Links de navegação no formulário */
+.login-container p.text-muted a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.login-container p.text-muted a:hover {
+    color: var(--color-secondary);
 }
 
 /* Mensagens de alerta/erro/sucesso */
 .login-container .alert {
-    margin-top: 20px;
+    margin-top: 25px;
     text-align: center;
     border-radius: 8px;
     font-weight: 500;
+    padding: 15px;
+    font-size: 1.1rem;
+    color: var(--color-bg-darkest);
+}
+.login-container .alert-danger {
+    background-color: var(--color-status-open);
+    border-color: var(--color-status-open);
+}
+.login-container .alert-success {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
 }
 
-/* Animação para o container de login/registro */
+/* Animação para o container */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
+    from { opacity: 0; transform: translateY(-30px); }
     to { opacity: 1; transform: translateY(0); }
 }

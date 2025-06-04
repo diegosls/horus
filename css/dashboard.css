@@ -1,80 +1,137 @@
-/* css/dashboard.css */
+body {
+    background-color: var(--color-bg-dark);
+}
 
 /* Estilos para os cards de incidentes */
 .card {
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-    border-radius: 10px;
-    border: none;
+    background-color: var(--color-bg-darkest);
+    color: var(--color-text-light);
+    margin-bottom: 25px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 .card-title {
-    color: #0056b3;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-primary);
     font-weight: 600;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
 }
 .card-subtitle {
     font-size: 0.9em;
+    color: var(--color-text-lighter);
+    margin-bottom: 15px;
+}
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+.card-text .badge {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 0.5em 0.8em;
+    border-radius: 5px;
+    text-transform: capitalize;
 }
 
 /* Cores para os status dos incidentes (badges) */
 .status-aberto {
-    background-color: #dc3545; /* Vermelho Bootstrap */
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: bold;
+    background-color: var(--color-status-open);
+    color: var(--color-text-white);
 }
-
 .status-em_andamento {
-    background-color: #ffc107; /* Amarelo Bootstrap */
-    color: #343a40; /* Texto escuro para contraste */
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: bold;
+    background-color: var(--color-status-pending);
+    color: var(--color-bg-darkest);
 }
-
 .status-resolvido {
-    background-color: #28a745; /* Verde Bootstrap */
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: bold;
+    background-color: var(--color-status-resolved);
+    color: var(--color-text-white);
 }
 
 /* Seções de formulário e lista */
 section {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    margin-bottom: 30px;
+    background-color: var(--color-bg-darkest);
+    color: var(--color-text-light);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    margin-bottom: 40px;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 section h2 {
-    color: #1c497a;
-    margin-bottom: 25px;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-primary);
+    margin-bottom: 30px;
     font-weight: 600;
+    font-size: 2rem;
 }
 hr {
-    border-top: 1px solid rgba(0,0,0,.1);
-    margin: 40px 0;
+    border-top: 1px solid rgba(255,255,255,.1);
+    margin: 50px 0;
 }
 .form-label {
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    color: #343a40;
+    color: var(--color-text-light);
 }
+.form-control, .form-select {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-white);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+}
+.form-control:focus, .form-select:focus {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-white);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.25rem rgba(187, 134, 252, 0.25);
+}
+/* Estilo para placeholder */
+.form-control::placeholder {
+    color: var(--color-text-lighter);
+    opacity: 0.7;
+}
+
+
+/* Botões de Ação */
 .btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    background-color: var(--color-status-resolved);
+    border-color: var(--color-status-resolved);
+    color: var(--color-bg-darkest);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 .btn-success:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
+    background-color: #5AA13E;
+    border-color: #5AA13E;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
 }
 .btn-danger {
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    background-color: var(--color-status-open);
+    border-color: var(--color-status-open);
+    color: var(--color-text-white);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 .btn-danger:hover {
-    background-color: #c82333;
+    background-color: #A03342;
+    border-color: #A03342;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Mensagem de nenhum incidente */
+#noIncidentsMessage {
+    color: var(--color-text-lighter);
+    font-style: italic;
+    padding: 20px;
 }
