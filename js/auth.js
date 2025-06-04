@@ -1,5 +1,3 @@
-// js/auth.js
-
 document.addEventListener('DOMContentLoaded', () => {
     // Elementos da página de Login
     const loginForm = document.getElementById('loginForm');
@@ -10,18 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const registerError = document.getElementById('registerError');
     const registerSuccess = document.getElementById('registerSuccess');
 
-    // Elementos da página de Registro de Incidentes (para proteção e logout)
+    // Elementos da página de Registro de Incidentes 
     const mainContent = document.getElementById('mainContent');
-
-    // Elementos da barra de navegação (novo)
-    const navLogin = document.getElementById('navLogin'); // Se você tivesse um link de login na navbar
-    const navRegisterUser = document.getElementById('navRegisterUser'); // Se você tivesse um link de registro na navbar
+    // Elementos da barra de navegação
+    const navLogin = document.getElementById('navLogin');
+    const navRegisterUser = document.getElementById('navRegisterUser');
     const navLogoutIndex = document.getElementById('navLogoutIndex');
     const navLogoutLogin = document.getElementById('navLogoutLogin');
     const navLogoutRegisterUser = document.getElementById('navLogoutRegisterUser');
-    const navLogoutRegister = document.getElementById('navLogoutRegister'); // Este já existia
+    const navLogoutRegister = document.getElementById('navLogoutRegister'); 
 
-    const API_BASE_URL = 'http://localhost:3000'; // URL base do seu json-server
+    const API_BASE_URL = 'http://localhost:3000'; 
 
     // --- Funções de Autenticação e Usuários ---
 
@@ -32,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return await response.json();
         } catch (error) {
             console.error('Erro de rede ou API:', error);
-            return []; // Retorna array vazio em caso de erro para não travar a aplicação
+            return []; 
         }
     }
 
@@ -48,12 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (navLogoutIndex) navLogoutIndex.classList.toggle('d-none', !loggedIn);
         if (navLogoutLogin) navLogoutLogin.classList.toggle('d-none', !loggedIn);
         if (navLogoutRegisterUser) navLogoutRegisterUser.classList.toggle('d-none', !loggedIn);
-        if (navLogoutRegister) navLogoutRegister.classList.toggle('d-none', !loggedIn);
-
-        // Links de Login/Registro (tornar visíveis se DESlogado)
-        // Se você tivesse links diretos para login/registro na navbar que não estivessem na tela atual
-        // Ex: if (navLogin) navLogin.classList.toggle('d-none', loggedIn);
-        // Ex: if (navRegisterUser) navRegisterUser.classList.toggle('d-none', loggedIn);
+        if (navLogoutRegister) navLogoutRegister.classList.toggle('d-none', !loggedIn);     
     }
 
     async function login(username, password) {
@@ -62,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (user) {
             localStorage.setItem('currentUser', username);
-            updateNavbarLinks(); // Atualiza a navbar após o login
+            updateNavbarLinks(); 
             window.location.href = 'register.html';
         } else {
             if (loginError) {
@@ -115,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function logout() {
         localStorage.removeItem('currentUser');
-        updateNavbarLinks(); // Atualiza a navbar após o logout
+        updateNavbarLinks(); 
         window.location.href = 'index.html';
     }
 
@@ -141,9 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Lógica de inicialização para cada página ---
 
-    // Sempre tenta atualizar os links da navbar ao carregar qualquer página
     updateNavbarLinks();
-    setupLogoutButtons(); // Configura os event listeners para os botões de logout
+    setupLogoutButtons(); 
 
     // Lógica específica para a página login.html
     if (loginForm) {
