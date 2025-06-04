@@ -1,5 +1,3 @@
-// js/script.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const incidentForm = document.getElementById('incidentForm');
     const incidentList = document.getElementById('incidentList');
@@ -10,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let incidents = [];
-    const API_BASE_URL = 'http://localhost:3000'; // URL base do seu json-server
+    const API_BASE_URL = 'http://localhost:3000'; 
 
     // Função para carregar incidentes da API
     async function loadIncidents() {
