@@ -16,8 +16,7 @@ Gestão de Incidentes de Rede
     Ler (R): Listar todos os incidentes registrados.
     Excluir (D): Remover incidentes da lista.
 
-(Obs: A funcionalidade de Atualização (U) não está implementada nesta versão.)
-Tecnologias Utilizadas
+Tecnologias 
 
     HTML5
     CSS3 (com Bootstrap 5 e Variáveis CSS)
@@ -32,9 +31,9 @@ Pré-requisitos
     Node.js e npm instalados.
 
 Passos
+instale o json server
 
-    Instale o JSON Server globalmente:
-    Bash
+    npm install -g json-server
 
 npm install -g json-server
 
