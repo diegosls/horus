@@ -26,19 +26,6 @@ Tecnologias Utilizadas
     JSON Server (para backend fake)
     Git & GitHub
 
-Estrutura do Projeto
-
-.
-├── index.html              # Landing Page
-├── login.html              # Login
-├── register.html           # Dashboard de Incidentes
-├── register_user.html      # Registro de Usuários
-├── css/                    # Estilos CSS (global, landing, auth, dashboard)
-├── data/                   # Dados do banco de dados fake
-│   └── db.json
-├── img/                    # Imagens (logo, fundos)
-└── js/                     # Scripts JS (autenticação, incidentes)
-
 Como Executar o Projeto Localmente
 Pré-requisitos
 
