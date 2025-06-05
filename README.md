@@ -28,14 +28,14 @@ Tecnologias
 Como Executar o Projeto Localmente
 Pré-requisitos
 
-    Node.js e npm instalados.
+Node.js e npm instalados.
 
 Passos
 instale o json server
 
     npm install -g json-server
 
-npm install -g json-server
+
 
 Crie/Verifique o db.json: Na pasta data/, certifique-se de que db.json possui:
 JSON
