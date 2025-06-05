@@ -1,0 +1,16 @@
+{
+    "name": "projeto-horus-incidente",
+    "version": "1.0.0",
+    "description": "Sistema de registro de incidentes de rede para Horus.",
+    "main": "index.html",
+    "scripts": {
+      "server": "json-server --watch data/db.json --port 3000",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Diego Sales",
+    "license": "ISC",
+    "devDependencies": {
+      "json-server": "^1.0.0"
+    }
+  }
