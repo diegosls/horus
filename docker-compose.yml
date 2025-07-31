@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  horus-db:
+    image: mysql:8.0
+    container_name: horus-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: horus
+      MYSQL_USER: horus_user
+      MYSQL_PASSWORD: horus_pwd
+    ports:
+      - "3307:3306"
+    volumes:
+      - horus_data:/var/lib/mysql
+      - ./data:/docker-entrypoint-initdb.d
+
+volumes:
+  horus_data:
