@@ -16,5 +16,16 @@ services:
       - horus_data:/var/lib/mysql
       - ./data:/docker-entrypoint-initdb.d
 
+  backend:
+    build: ./backend
+    container_name: horus-backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: mysql://horus_user:horus_pwd@horus-db:3306/horus
+    depends_on:
+      - horus-db
+
 volumes:
   horus_data:
