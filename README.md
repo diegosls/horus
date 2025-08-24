@@ -102,8 +102,5 @@ horus/
 
 ---
 
-## Observações
-
-- O script `entrypoint.sh` garante que o banco esteja disponível e sincroniza o Prisma antes de iniciar o backend.
-- Configure as variáveis de ambiente no arquivo `.env` do backend, incluindo `DATABASE_URL` e `JWT_SECRET`.
-- Para dúvidas ou problemas, consulte os logs do backend e
+## Autor:
+Diego Costa Sales - 20221380034   
