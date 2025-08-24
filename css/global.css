@@ -64,4 +64,8 @@ footer {
     color: var(--color-text-lighter);
     font-size: 0.9rem;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.4);
+
+    .text-incidente-info {
+        color: var(--color-primary); /* ou qualquer variável/cor que preferir */
+}
 }

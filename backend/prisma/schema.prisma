@@ -8,16 +8,20 @@ generator client {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  username  String    @unique
-  password  String
-  incidents Incident[]
+  id         Int        @id @default(autoincrement())
+  username   String     @unique
+  password   String
+  incidents  Incident[]
 }
 
 model Incident {
   id          Int      @id @default(autoincrement())
   title       String
   description String
+  date        DateTime
+  time        String
+  type        String
+  status      String   @default("aberto") // Este campo precisa existir
   createdAt   DateTime @default(now())
   userId      Int
   user        User     @relation(fields: [userId], references: [id])

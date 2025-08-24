@@ -7,6 +7,25 @@ const jwt = require('jsonwebtoken');
 const db = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || 'uma_chave_secreta_qualquer';
 
+// Middleware de autenticação para as rotas protegidas
+const authenticateToken = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1]; // Assume o formato "Bearer TOKEN"
+
+    if (!token) {
+        return res.status(401).json({ error: 'Token não fornecido' });
+    }
+
+    jwt.verify(token, JWT_SECRET, (err, user) => {
+        if (err) {
+            console.error('Erro de verificação do token:', err);
+            return res.status(403).json({ error: 'Token inválido ou expirado' });
+        }
+        req.user = user; // Adiciona o payload do token ao objeto de requisição
+        next();
+    });
+};
+
 // --- Registro de Usuário ---
 router.post('/register', async (req, res) => {
     const { username, password } = req.body;
@@ -39,9 +58,12 @@ router.post('/login', async (req, res) => {
 });
 
 // --- Listar Incidentes ---
-router.get('/incidents', async (req, res) => {
+router.get('/incidents', authenticateToken, async (req, res) => {
     try {
-        const incidents = await db.incident.findMany({ orderBy: { createdAt: 'desc' } });
+        const incidents = await db.incident.findMany({ 
+            where: { userId: req.user.userId },
+            orderBy: { createdAt: 'desc' } 
+        });
         res.json(incidents);
     } catch (err) {
         console.error(err);
@@ -50,34 +72,32 @@ router.get('/incidents', async (req, res) => {
 });
 
 // --- Registrar Incidente ---
-router.post('/incidents', async (req, res) => {
-    const authHeader = req.headers.authorization;
-    if (!authHeader) return res.status(401).json({ error: 'Token não fornecido' });
+router.post('/incidents', authenticateToken, async (req, res) => {
+    const { title, description, date, time, type } = req.body;
+    console.log('POST /incidents chamado');
+    console.log('Dados recebidos:', { title, description, date, time, type, userId: req.user.userId });
 
-    const token = authHeader.split(' ')[0] || authHeader; // só pega o token
-    let payload;
-    try {
-        payload = jwt.verify(token, JWT_SECRET);
-    } catch {
-        return res.status(401).json({ error: 'Token inválido' });
+    if (!title || !description || !date || !time || !type) {
+        return res.status(400).json({ error: 'Dados incompletos. Todos os campos são obrigatórios.' });
     }
-
-    const { title, description } = req.body;
-    if (!title || !description) return res.status(400).json({ error: 'Dados incompletos' });
 
     try {
         const incident = await db.incident.create({
             data: {
                 title,
                 description,
-                userId: payload.userId
+                date: new Date(date),
+                time,
+                type,
+                user: {
+                    connect: { id: req.user.userId }
+                }
             }
         });
         res.json(incident);
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Erro ao registrar incidente' });
+        console.error('Erro detalhado ao registrar incidente:', err);
+        res.status(500).json({ error: err.message });
     }
 });
-
 module.exports = router;

@@ -23,7 +23,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: mysql://horus_user:horus_pwd@horus-db:3306/horus
+      DATABASE_URL: mysql://root:root@horus-db:3306/horus
     depends_on:
       - horus-db
 

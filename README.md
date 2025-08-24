@@ -1,68 +1,109 @@
-Projeto Horus: Registro de Incidentes de Rede
-Descrição do Projeto
+# Horus - Sistema de Registro e Gestão de Incidentes
 
-Aplicação web para simular um sistema de registro e gerenciamento de incidentes de rede. Desenvolvido com frontend (HTML, CSS, JavaScript) e um backend mockado (json-server) para persistência de dados localmente. Possui interface moderna com tema escuro.
-Funcionalidades
-Gestão de Usuários
+## Sobre o Projeto
 
-    Registro de Usuários: Criar novas contas.
-    Login: Acessar a área restrita.
-    Controle de Acesso: Página de incidentes protegida por login.
-    Logout: Sair da conta.
+O **Horus** é um sistema web para registro, consulta e gerenciamento de incidentes.  
+Permite que usuários se cadastrem, façam login, registrem novos incidentes e visualizem todos os incidentes cadastrados.  
+O backend é feito em Node.js com Express e Prisma ORM, utilizando MySQL como banco de dados.  
+O frontend é desenvolvido em HTML, CSS e JavaScript puro.
 
-Gestão de Incidentes de Rede
+---
 
-    Criar (C): Registrar novos incidentes (data/hora, tipo, descrição, status).
-    Ler (R): Listar todos os incidentes registrados.
-    Excluir (D): Remover incidentes da lista.
+## Funcionalidades
 
-Tecnologias 
+- Cadastro e login de usuários
+- Registro de incidentes com título, descrição, data, hora e tipo
+- Listagem dos incidentes do usuário
+- Interface responsiva e tema escuro
 
-    HTML5
-    CSS3 (com Bootstrap 5 e Variáveis CSS)
-    JavaScript (ES6+)
-    Google Fonts (Poppins, Montserrat)
-    JSON Server (para backend fake)
-    Git & GitHub
+---
 
-Como Executar o Projeto Localmente
-Pré-requisitos
+## Como Executar
 
-Node.js e npm instalados.
+### 1. Banco de Dados
 
-Passos
-instale o json server
+Certifique-se que o MySQL está rodando e as tabelas foram criadas.  
+O script SQL para criar as tabelas está em `data/db.sql`.
 
-    npm install -g json-server
+### 2. Backend
 
+#### Via Docker
 
+1. Na raiz do projeto, execute:
+   ```bash
+   docker compose up
+   ```
+2. O backend estará disponível em `http://localhost:3000`.
 
-Crie/Verifique o db.json: Na pasta data/, certifique-se de que db.json possui:
-JSON
+#### Via Node.js
 
-{ "users": [{ "id": 1, "username": "admin", "password": "123" }], "incidents": [] }
+1. Instale as dependências:
+   ```bash
+   cd backend
+   npm install
+   ```
+2. Gere o Prisma Client e sincronize o banco:
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
+3. Inicie o servidor:
+   ```bash
+   node server.js
+   ```
+4. O backend estará disponível em `http://localhost:3000`.
 
-Inicie o Backend Fake (json-server): No terminal, na pasta raiz do projeto:
-Bash
+### 3. Frontend
 
-    json-server --watch data/db.json --port 3000
+Abra o arquivo `index.html` da pasta do frontend no navegador  
+ou utilize uma extensão como "Live Server" no VS Code.
 
-    Mantenha este terminal aberto.
-    Inicie o Frontend (Live Server): Use a extensão "Live Server" no VS Code. Clique direito em index.html e "Open with Live Server". Acesse a aplicação em http://127.0.0.1:5500.
+---
 
-Guia de Uso
+## Estrutura do Projeto
 
-    Login Padrão: admin / 123.
-    Registro: Clique em "Não tem uma conta? Registre-se aqui".
-    Dashboard: Após o login, adicione e gerencie incidentes.
+```
+horus/
+├── backend/
+│   ├── generated/
+│   ├── node_modules/
+│   ├── prisma/
+│   │   └── schema.prisma
+│   ├── .env
+│   ├── .gitignore
+│   ├── db.js
+│   ├── Dockerfile
+│   ├── entrypoint.sh
+│   ├── index.js
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── routes.js
+│   ├── server.js
+├── css/
+│   ├── auth.css
+│   ├── dashboard.css
+│   ├── global.css
+│   ├── landing.css
+├── data/
+│   └── db.sql
+├── img/
+│   └── logo1.png
+├── js/
+│   └── auth.js
+├── docker-compose.yml
+├── index.html
+├── login.html
+├── package.json
+├── preview.png
+├── README.md
+├── register_user.html
+├── register.html
+```
 
-Próximos Passos e Melhorias Futuras
+---
 
-    Implementar funcionalidades de Atualização (U) para incidentes e usuários.
-    Adicionar filtros e pesquisa na lista de incidentes.
-    Integrar com um backend e banco de dados reais para produção.
+## Observações
 
-Autor
-
-    diegosls
-
+- O script `entrypoint.sh` garante que o banco esteja disponível e sincroniza o Prisma antes de iniciar o backend.
+- Configure as variáveis de ambiente no arquivo `.env` do backend, incluindo `DATABASE_URL` e `JWT_SECRET`.
+- Para dúvidas ou problemas, consulte os logs do backend e

@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchIncidents() {
         try {
             const res = await fetch(`${API_BASE_URL}/incidents`, {
-                headers: { Authorization: getToken() }
+                headers: { Authorization: `Bearer ${getToken()}` }
             });
             if (!res.ok) throw new Error('Erro ao buscar incidentes');
             return await res.json();
@@ -111,15 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    async function addIncident(title, description) {
+    async function addIncident(title, description, date, time, type) {
         try {
             const res = await fetch(`${API_BASE_URL}/incidents`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: getToken()
+                    Authorization: `Bearer ${getToken()}`
                 },
-                body: JSON.stringify({ title, description })
+                body: JSON.stringify({ title, description, date, time, type })
             });
             if (!res.ok) throw new Error('Erro ao registrar incidente');
             return await res.json();
@@ -137,6 +137,25 @@ document.addEventListener('DOMContentLoaded', () => {
             <section class="mb-5">
                 <h2>Registrar Novo Incidente</h2>
                 <form id="incidentForm">
+                    <div class="mb-3">
+                        <label for="incidentDate" class="form-label">Data do Incidente:</label>
+                        <input type="text" class="form-control" id="incidentDate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="incidentTime" class="form-label">Hora do Incidente:</label>
+                        <input type="text" class="form-control" id="incidentTime" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="incidentType" class="form-label">Tipo de Incidente:</label>
+                        <select class="form-select" id="incidentType" required>
+                            <option value="" disabled selected>Selecione o tipo de incidente</option>
+                            <option value="hardware">Hardware</option>
+                            <option value="software">Software</option>
+                            <option value="rede">Rede</option>
+                            <option value="seguranca">Segurança</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
                     <div class="mb-3">
                         <label for="title" class="form-label">Título:</label>
                         <input type="text" class="form-control" id="title" required>
@@ -156,6 +175,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </section>
         `;
+        
+        // Inicializa Flatpickr para data e hora
+        flatpickr("#incidentDate", {
+            dateFormat: "Y-m-d",
+        });
+
+        flatpickr("#incidentTime", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            time_24hr: true
+        });
 
         const incidentForm = document.getElementById('incidentForm');
         const incidentList = document.getElementById('incidentList');
@@ -164,7 +195,11 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const title = document.getElementById('title').value;
             const description = document.getElementById('description').value;
-            const incident = await addIncident(title, description);
+            const date = document.getElementById('incidentDate').value;
+            const time = document.getElementById('incidentTime').value;
+            const type = document.getElementById('incidentType').value;
+
+            const incident = await addIncident(title, description, date, time, type);
             if (incident) {
                 incidentForm.reset();
                 await loadIncidents();
@@ -185,7 +220,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="card-body">
                                 <h5 class="card-title">${inc.title}</h5>
                                 <p class="card-text">${inc.description}</p>
-                                <small class="text-muted">${new Date(inc.createdAt).toLocaleString()}</small>
+                                <small class="text-primary">
+                                    Tipo: ${inc.type || 'N/A'} | Data: ${new Date(inc.date).toLocaleDateString()} | Hora: ${inc.time || 'N/A'}
+                                </small>
                             </div>
                         </div>
                     `;

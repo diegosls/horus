@@ -44,7 +44,7 @@ function authMiddleware(req, res, next) {
     if (!token) return res.status(401).send('Token não fornecido.');
 
     try {
-        const decoded = jwt.verify(token, JWT_SECRET);
+        const decoded = jwt.verify(token.split(' ')[1], JWT_SECRET);
         req.userId = decoded.userId;
         next();
     } catch (err) {
@@ -54,18 +54,36 @@ function authMiddleware(req, res, next) {
 
 // --- Incidentes ---
 app.get('/api/incidents', authMiddleware, async (req, res) => {
-    const incidents = await prisma.incident.findMany({ where: { userId: req.userId } });
+    const incidents = await prisma.incident.findMany({ 
+        where: { userId: req.userId },
+        orderBy: { createdAt: 'desc' }
+    });
     res.json(incidents);
 });
 
 app.post('/api/incidents', authMiddleware, async (req, res) => {
-    const { title, description } = req.body;
-    if (!title || !description) return res.status(400).send('Campos obrigatórios.');
+    const { title, description, date, time, type } = req.body;
+    
+    if (!title || !description || !date || !time || !type) {
+        return res.status(400).send('Campos obrigatórios: título, descrição, data, hora e tipo.');
+    }
 
-    const incident = await prisma.incident.create({
-        data: { title, description, userId: req.userId }
-    });
-    res.status(201).json(incident);
+    try {
+        const incident = await prisma.incident.create({
+            data: { 
+                title, 
+                description, 
+                date: new Date(date),
+                time,
+                type,
+                userId: req.userId 
+            }
+        });
+        res.status(201).json(incident);
+    } catch (err) {
+        console.error("Erro ao registrar incidente:", err);
+        res.status(500).send('Erro interno do servidor ao registrar incidente.');
+    }
 });
 
 app.listen(PORT, () => console.log(`Backend rodando em http://localhost:${PORT}`));
